@@ -2,3 +2,5 @@ annotations
 images
 annotations.tar.gz
 images.tar.gz
+__pycache__
+model/

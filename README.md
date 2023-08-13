@@ -1,16 +1,23 @@
 # Segmentation with OpenVINO: Enhancing Semantic Segmentation
 
-Welcome to the Segmentation with OpenVINO repository! Here, we dive into the captivating world of semantic segmentation, showcasing the journey from training a segmentation model on the Oxford's Pets dataset to optimizing it for lightning-fast inference using OpenVINO. This repository demonstrates how the strategic integration of OpenVINO can significantly accelerate inference while maintaining remarkable accuracy.
+Welcome to the Segmentation with OpenVINO repository! Here, we dive into the captivating world of semantic segmentation, showcasing the journey from training a segmentation model on Oxford's Pets dataset to optimizing it for lightning-fast inference using OpenVINO. This repository demonstrates how the strategic integration of OpenVINO can significantly accelerate inference while maintaining remarkable accuracy.
+
+## Demo
+
+https://github.com/SuperSecureHuman/Segmentation_OneAPI/assets/88489071/ac1beaac-a805-49b4-b898-c26b33ca7fed
+
+## Model Weights
+
+The total size of all the needed weights to replicate this is approx 300MB. I will try hosting it, meanwhile, I will provide the weights on request.
 
 ## Introduction
 
-The main goal of this repository is to guide you through the process of training a robust semantic segmentation model on the Oxford's Pets dataset. However, the journey doesn't stop there – we take the model's performance to the next level by meticulously optimizing it for rapid inference. This readme serves as your compass, helping you navigate through the tools, techniques, and transformations that breathe life into the model, all efficiently powered by OpenVINO.
+The main goal of this repository is to guide you through the process of training a robust semantic segmentation model on Oxford's Pets dataset. However, the journey doesn't stop there – we take the model's performance to the next level by meticulously optimizing it for rapid inference. This readme serves as your compass, helping you navigate through the tools, techniques, and transformations that breathe life into the model, all efficiently powered by OpenVINO.
 
 ## Dataset
+[Oxford's Pets dataset](https://www.robots.ox.ac.uk/~vgg/data/pets/). This comprehensive dataset provides a rich collection of diverse pet images, accompanied by detailed pixel-wise annotations essential for seamless semantic segmentation tasks.
 
-The foundation of this endeavor is the esteemed [Oxford's Pets dataset](https://www.robots.ox.ac.uk/~vgg/data/pets/). This comprehensive dataset provides a rich collection of diverse pet images, accompanied by detailed pixel-wise annotations essential for seamless semantic segmentation tasks.
-
-## Evolutionary Methods
+## Methods
 
 This repository unveils the story of the model's refinement through various pivotal methods:
 
@@ -36,7 +43,7 @@ Journey, witnessing the model's speed surge from ~16 fps to ~100 fps using OpenV
 
 - Initial steps delve into Torch.
 - JIT and IPEX come next, with quantization playing a minor role.
-- A turning point arrives with nncf and a calibration dataset. The result? INT8 quantization, delivering staggering performance.
+- A turning point arrives with NNCF and a calibration dataset. The result? INT8 quantization, delivering staggering performance.
 
 ## License to Thrive
 

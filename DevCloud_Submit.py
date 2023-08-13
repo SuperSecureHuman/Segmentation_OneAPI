@@ -136,4 +136,4 @@ print(f"Test Loss: {test_loss:.4f}")
 
 # save model
 
-torch.save(model.state_dict(), "model.pt")
+torch.save(model.state_dict(), "model.pth")

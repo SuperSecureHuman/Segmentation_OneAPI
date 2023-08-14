@@ -1,54 +1,86 @@
 # Segmentation with OpenVINO: Enhancing Semantic Segmentation
 
-Welcome to the Segmentation with OpenVINO repository! Here, we dive into the captivating world of semantic segmentation, showcasing the journey from training a segmentation model on Oxford's Pets dataset to optimizing it for lightning-fast inference using OpenVINO. This repository demonstrates how the strategic integration of OpenVINO can significantly accelerate inference while maintaining remarkable accuracy.
+## Table of Contents
 
-## Demo
-
-https://github.com/SuperSecureHuman/Segmentation_OneAPI/assets/88489071/ac1beaac-a805-49b4-b898-c26b33ca7fed
-
-## Model Weights
-
-The total size of all the needed weights to replicate this is approx 300MB. I will try hosting it, meanwhile, I will provide the weights on request.
+- [Introduction](#introduction)
+- [Demo](#demo)
+- [Model Weights](#model-weights)
+- [Dataset](#dataset)
+- [Methods](#methods)
+- [Inference Performance](#inference-performance)
+- [Integration of OneAPI](#integration-of-oneapi)
+- [Other Integration Possiblities](#other-integration-possiblites)
+- [Further Works](#further-works)
+- [License](#license)
 
 ## Introduction
 
-The main goal of this repository is to guide you through the process of training a robust semantic segmentation model on Oxford's Pets dataset. However, the journey doesn't stop there – we take the model's performance to the next level by meticulously optimizing it for rapid inference. This readme serves as your compass, helping you navigate through the tools, techniques, and transformations that breathe life into the model, all efficiently powered by OpenVINO.
+Semantic segmentation, a cornerstone of computer vision, involves understanding images at a pixel level. This repository embarks on a journey from training a robust semantic segmentation model on Oxford's Pets dataset to optimizing it for real-time inference using OpenVINO. The goal is to maintain exceptional accuracy while achieving lightning-fast performance.
+
+## Demo
+
+A short video demonstration showcases the efficiency and accuracy achieved through the integration of OpenVINO.
+
+Run `demo.py`. Make sure to have model weights in the path `./model/model_int8.xml`
+
+<https://github.com/SuperSecureHuman/Segmentation_OneAPI/assets/88489071/ac1beaac-a805-49b4-b898-c26b33ca7fed>
+
+## Model Weights
+
+Model weights can be found in the Releases page. In order to run the final demo, you need only the INT8 files.
 
 ## Dataset
-[Oxford's Pets dataset](https://www.robots.ox.ac.uk/~vgg/data/pets/). This comprehensive dataset provides a rich collection of diverse pet images, accompanied by detailed pixel-wise annotations essential for seamless semantic segmentation tasks.
+
+I used the [Oxford's Pets dataset](https://www.robots.ox.ac.uk/~vgg/data/pets/) for our training and evaluation. This dataset offers a rich collection of diverse pet images along with meticulous pixel-wise annotations, providing the foundation for seamless semantic segmentation tasks.
+
+## Project Stack
+
+1. Pytorch
+2. OpenCV
+3. Pytorch Segmentation Models
+4. NNCF (Neural Network Compression Framework for enhanced OpenVINO™ inference)
+5. OpenVINO
+6. Intel Extention for Pytorch
 
 ## Methods
 
-This repository unveils the story of the model's refinement through various pivotal methods:
+The evolution of our model is outlined through these pivotal methods:
 
-- **Torch:** The journey commences with PyTorch, laying the groundwork for subsequent optimizations.
+1. **Torch**: The model's journey starts with PyTorch, establishing the initial baseline.
+2. **TorchScript**: Transitioning to TorchScript enables dynamic Just-In-Time (JIT) compilation, enhancing computational efficiency.
+3. **Intel PyTorch Extension (IPEX) - BFFloat**: IPEX with BFFloat optimization empowers the model's computations, boosting overall performance.
+4. **Testing Quantization**: Quantization is tested to determine its impact on accuracy and performance.
+5. **OpenVINO Integration**: The optimized PyTorch model seamlessly converts to OpenVINO's Intermediate Representation (IR) format, delivering unmatched inference speed.
 
-- **TorchScript:** Witness the metamorphosis as the model transitions into TorchScript, enabling dynamic Just-In-Time (JIT) compilation for enhanced efficiency.
+## Inference Performance
 
-- **Intel PyTorch Extension (IPEX) - BFFloat:** Unleash the power of IPEX with BFFloat optimization, propelling the model's computation into overdrive.
-
-- **OpenVINO:** The pièce de résistance – observe as the optimized PyTorch model seamlessly transforms into OpenVINO's Intermediate Representation (IR) format, elevating inference speed to unprecedented levels.
-
-## Inference Improvements
-
-Prepare to be astonished by the achievement of boosting inference performance:
+The leap in inference performance is astonishing:
 
 - Initial PyTorch CPU inference speed: ~16 frames per second (fps).
 - Inference speed with OpenVINO CPU (INT8 precision): ~100 fps.
-- It's worth noting that this speed surge is accomplished without compromising segmentation accuracy.
 
-## Progression
+Notably, this performance enhancement is achieved without any compromise on segmentation accuracy.
 
-Journey, witnessing the model's speed surge from ~16 fps to ~100 fps using OpenVINO:
+## Integration of OneAPI
 
-- Initial steps delve into Torch.
-- JIT and IPEX come next, with quantization playing a minor role.
-- A turning point arrives with NNCF and a calibration dataset. The result? INT8 quantization, delivering staggering performance.
+Optimization is at the heart of this project, facilitated by OneAPI tools:
 
-## License to Thrive
+1. **Export to ONNX**: Model Optimizer (MO) exports the model to ONNX format for compatibility with OpenVINO.
+2. **NNCF Quantization**: Neural Network Compression Framework (NNCF) enables INT8 quantization and exporting.
+3. **Intel OpenVINO Inference Engine**: The Intel OpenVINO Inference Engine drives rapid execution during inference.
 
-This project operates under the umbrella of the [MIT License](LICENSE), granting you the freedom to manipulate, adjust, and share the code while preserving the original license terms.
+### Other Integration Possiblites
+
+1. Can use other Intel Hardware (Intel Xeon Processors, Habana Gaudi Instances, Intel Server GPUs) via DevCloud for training by leveraging IPEX and Torch XPU interface. Since I had a GPU locally, I preffered using it.
+2. Host an async inference server, and use the model for real-time inference with data from other devices. Couldn't do because of lack of hardware presently with me.
+
+## Further Works
+
+1. Use the model for real-time inference with data from other devices (Make use of inference server within OpenVINO).
+2. Extend this to use Intel NCS on edge Devices
+
+## License
+
+This project operates under the [MIT License](LICENSE), granting you the freedom to manipulate, adjust, and share the code while adhering to the original license terms.
 
 ---
-
-Explore the repository's directories to unravel the array of optimization methods. Witness the transformation of the model from its nascent state to a dynamically optimized, OpenVINO-fueled masterpiece. If questions or ideas arise, don't hesitate to reach out – the door is always open for connection.

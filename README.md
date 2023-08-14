@@ -46,11 +46,11 @@ I used the [Oxford's Pets dataset](https://www.robots.ox.ac.uk/~vgg/data/pets/) 
 
 The evolution of our model is outlined through these pivotal methods:
 
-1. **Torch**: The model's journey starts with PyTorch, establishing the initial baseline.
+1. **Torch**: Training of the model. And using torch for initial baseline to start with.
 2. **TorchScript**: Transitioning to TorchScript enables dynamic Just-In-Time (JIT) compilation, enhancing computational efficiency.
-3. **Intel PyTorch Extension (IPEX) - BFFloat**: IPEX with BFFloat optimization empowers the model's computations, boosting overall performance.
-4. **Testing Quantization**: Quantization is tested to determine its impact on accuracy and performance.
-5. **OpenVINO Integration**: The optimized PyTorch model seamlessly converts to OpenVINO's Intermediate Representation (IR) format, delivering unmatched inference speed.
+3. **Intel PyTorch Extension (IPEX) - BFFloat**: IPEX with BFFloat optimization leverages oneDNN. IPEX applies graph fusion, which is accelerated by oneDNN.
+4. **Testing Quantization**: Quantization with Callibration data was used then to compress the model to INT8 without compermising on accuracy.
+5. **OpenVINO Integration**: The optimized model seamlessly converts to OpenVINO's Intermediate Representation (IR) format, delivering fast inference speed.
 
 ## Inference Performance
 

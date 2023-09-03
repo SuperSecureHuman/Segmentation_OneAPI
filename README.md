@@ -23,7 +23,11 @@ A short video demonstration showcases the efficiency and accuracy achieved throu
 
 Run `demo.py`. Make sure to have model weights in the path `./model/model_int8.xml`
 
-<https://github.com/SuperSecureHuman/Segmentation_OneAPI/assets/88489071/ac1beaac-a805-49b4-b898-c26b33ca7fed>
+
+
+<https://github.com/SuperSecureHuman/Segmentation_OneAPI/assets/88489071/efe54327-e7c7-4e03-bf90-008340190f96>
+
+
 
 ## Model Weights
 
